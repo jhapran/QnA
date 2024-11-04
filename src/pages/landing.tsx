@@ -1,6 +1,10 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Brain, Sparkles, Target } from 'lucide-react';
+import { ArrowRight, Brain, Sparkles, Target, BookOpen, Settings2, FileCheck, ArrowRight as ArrowRightIcon, Clock, Users, BarChart3, Zap, Wand2 } from 'lucide-react';
 import { Button } from '../components/ui/button';
+import { SelectSubjectIllustration } from '../components/illustrations/select-subject';
+import { CustomizeParamsIllustration } from '../components/illustrations/customize-params';
+import { GenerateExportIllustration } from '../components/illustrations/generate-export';
+import { HeroIllustration } from '../components/illustrations/hero';
 
 export function Landing() {
   return (
@@ -14,88 +18,284 @@ export function Landing() {
         
         <div className="relative">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="py-20 lg:py-32">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+            <div className="lg:grid lg:grid-cols-12 lg:gap-8 py-20 lg:py-32">
+              {/* Left Content */}
+              <motion.div 
+                className="lg:col-span-6 flex flex-col justify-center"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-center"
               >
-                <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                  Transform Your Teaching with
-                  <span className="relative whitespace-nowrap">
-                    <span className="relative bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text px-2 text-transparent">
-                      AI-Powered
+                <div className="flex items-center gap-x-2 text-blue-600">
+                  <Wand2 className="h-5 w-5" />
+                  <span className="text-sm font-semibold tracking-wide">AI-POWERED EDUCATION</span>
+                </div>
+                <h1 className="mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl sm:tracking-tight lg:text-5xl xl:text-6xl">
+                  <span className="block">Effortless Question</span>
+                  <span className="block mt-1">
+                    Creation for{' '}
+                    <span className="relative whitespace-nowrap">
+                      <span className="relative bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+                        Every Topic
+                      </span>
                     </span>
                   </span>
-                  Education
                 </h1>
-                <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-                  Generate customized questions, quizzes, and educational content in seconds.
-                  Perfect for teachers who want to create engaging learning materials efficiently.
+                <p className="mt-6 text-lg text-gray-600 sm:text-xl max-w-2xl">
+                  Your AI-powered quiz assistant that transforms teaching. Generate customized questions, 
+                  quizzes, and educational content in seconds.
                 </p>
-                <div className="mt-10 flex items-center justify-center gap-x-6">
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Button size="lg" className="group">
-                    Start Creating
+                    Try for Free
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" className="group">
                     Watch Demo
+                    <motion.div
+                      className="ml-2 p-1 rounded-full bg-blue-100"
+                      animate={{ scale: [1, 1.2, 1] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      <div className="w-2 h-2 rounded-full bg-blue-600" />
+                    </motion.div>
                   </Button>
+                </div>
+                <div className="mt-8 flex items-center gap-x-8">
+                  {[
+                    { label: 'Active Teachers', value: '10,000+' },
+                    { label: 'Questions Generated', value: '1M+' },
+                    { label: 'Time Saved', value: '80%' }
+                  ].map((stat, index) => (
+                    <motion.div
+                      key={stat.label}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+                      className="flex flex-col"
+                    >
+                      <dt className="text-sm text-gray-600">{stat.label}</dt>
+                      <dd className="text-2xl font-bold text-gray-900">{stat.value}</dd>
+                    </motion.div>
+                  ))}
                 </div>
               </motion.div>
 
-              {/* Features Grid */}
-              <div className="mt-20 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="rounded-xl bg-white/80 p-8 shadow-sm ring-1 ring-gray-200/50 backdrop-blur-sm"
-                >
-                  <div className="rounded-lg bg-blue-600/10 p-3 w-fit">
+              {/* Right Illustration */}
+              <motion.div
+                className="mt-16 lg:mt-0 lg:col-span-6"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                <div className="relative">
+                  <HeroIllustration />
+                  {/* Floating elements */}
+                  <motion.div
+                    className="absolute -top-4 right-20 p-4 bg-white rounded-xl shadow-lg"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  >
                     <Brain className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">AI-Powered Generation</h3>
-                  <p className="mt-2 text-gray-600">
-                    Create high-quality educational content tailored to your subject and student level.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  className="rounded-xl bg-white/80 p-8 shadow-sm ring-1 ring-gray-200/50 backdrop-blur-sm"
-                >
-                  <div className="rounded-lg bg-blue-600/10 p-3 w-fit">
-                    <Target className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">Customizable Content</h3>
-                  <p className="mt-2 text-gray-600">
-                    Adjust difficulty levels and question types to match your teaching objectives.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  className="rounded-xl bg-white/80 p-8 shadow-sm ring-1 ring-gray-200/50 backdrop-blur-sm"
-                >
-                  <div className="rounded-lg bg-blue-600/10 p-3 w-fit">
-                    <Sparkles className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold text-gray-900">Time-Saving Tools</h3>
-                  <p className="mt-2 text-gray-600">
-                    Generate and export content in multiple formats with just a few clicks.
-                  </p>
-                </motion.div>
-              </div>
+                  </motion.div>
+                  <motion.div
+                    className="absolute top-1/2 -right-4 p-4 bg-white rounded-xl shadow-lg"
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{ repeat: Infinity, duration: 3, delay: 1 }}
+                  >
+                    <Sparkles className="h-6 w-6 text-indigo-600" />
+                  </motion.div>
+                </div>
+              </motion.div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* How it Works Section */}
+      <section className="py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <motion.h2 
+              className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              How It Works
+            </motion.h2>
+            <motion.p 
+              className="mt-4 text-lg text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Three simple steps to transform your question creation process
+            </motion.p>
+          </div>
+
+          <div className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-3">
+            {[
+              {
+                title: "Select Your Subject",
+                description: "Choose from a wide range of subjects and topics tailored to your curriculum",
+                illustration: <SelectSubjectIllustration />,
+                delay: 0
+              },
+              {
+                title: "Customize Parameters",
+                description: "Set difficulty levels, question types, and specific requirements for your content",
+                illustration: <CustomizeParamsIllustration />,
+                delay: 0.2
+              },
+              {
+                title: "Generate & Export",
+                description: "Get AI-generated questions instantly and export in your preferred format",
+                illustration: <GenerateExportIllustration />,
+                delay: 0.4
+              }
+            ].map((step, index) => (
+              <motion.div
+                key={step.title}
+                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: step.delay }}
+              >
+                <div className="flex flex-col items-center">
+                  <div className="mb-8 flex h-48 w-48 items-center justify-center">
+                    {step.illustration}
+                  </div>
+                  <h3 className="mt-6 text-xl font-semibold text-gray-900">{step.title}</h3>
+                  <p className="mt-2 text-center text-gray-600">{step.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <motion.h2 
+              className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              Why Choose EduQuery?
+            </motion.h2>
+            <motion.p 
+              className="mt-4 text-lg text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+            >
+              Discover how our platform revolutionizes educational content creation
+            </motion.p>
+          </div>
+
+          <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              {
+                icon: <Clock className="h-6 w-6 text-blue-600" />,
+                title: "Save Valuable Time",
+                description: "Generate comprehensive question sets in minutes instead of hours"
+              },
+              {
+                icon: <Target className="h-6 w-6 text-blue-600" />,
+                title: "Tailored Content",
+                description: "Questions perfectly matched to your curriculum and student level"
+              },
+              {
+                icon: <BarChart3 className="h-6 w-6 text-blue-600" />,
+                title: "Track Progress",
+                description: "Monitor student performance and identify areas for improvement"
+              },
+              {
+                icon: <Settings2 className="h-6 w-6 text-blue-600" />,
+                title: "Customizable Options",
+                description: "Adjust difficulty, format, and content type to meet your needs"
+              },
+              {
+                icon: <FileCheck className="h-6 w-6 text-blue-600" />,
+                title: "Quality Assured",
+                description: "AI-generated content reviewed for accuracy and relevance"
+              },
+              {
+                icon: <Users className="h-6 w-6 text-blue-600" />,
+                title: "Collaborative Features",
+                description: "Share and collaborate with other educators in your network"
+              }
+            ].map((benefit, index) => (
+              <motion.div
+                key={benefit.title}
+                className="relative rounded-2xl bg-white p-8 shadow-sm hover:shadow-md transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900">{benefit.title}</h3>
+                <p className="mt-2 text-gray-600">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="relative py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600 to-indigo-600 px-8 py-24 shadow-2xl lg:px-16">
+            <div className="absolute inset-0">
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#4F46E5,#818CF8)] mix-blend-multiply" />
+            </div>
+            <div className="relative">
+              <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+                <div>
+                  <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                    Ready to Transform Your Teaching?
+                  </h2>
+                  <p className="mt-6 max-w-xl text-lg text-blue-100">
+                    Join thousands of educators who are already saving time and creating better content with EduQuery.
+                  </p>
+                </div>
+                <div className="mt-12 lg:mt-0 lg:flex lg:items-center lg:justify-end">
+                  <motion.div
+                    className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Button
+                      size="lg"
+                      className="bg-white text-blue-600 hover:bg-blue-50"
+                    >
+                      Get Started Now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      className="border-white text-white hover:bg-white/10"
+                    >
+                      Schedule Demo
+                    </Button>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
