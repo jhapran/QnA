@@ -277,7 +277,7 @@ export function Landing() {
                   >
                     <Button
                       size="lg"
-                      className="bg-green text-blue-600 hover:bg-blue-50"
+                      className="bg-blue-50 text-blue-600 hover:bg-blue-50"
                     >
                       Get Started Now
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -285,7 +285,7 @@ export function Landing() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="border-green text-white hover:bg-white/10"
+                      className="border-blue-50 text-white hover:bg-white/10"
                     >
                       Schedule Demo
                     </Button>
