@@ -1,5 +1,5 @@
 import { Bell, LogOut, Settings, User } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 
 interface HeaderProps {
@@ -7,6 +7,12 @@ interface HeaderProps {
 }
 
 export function Header({ isAuthenticated }: HeaderProps) {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/dashboard');
+  };
+
   return (
     <header className="border-b border-gray-200 bg-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -37,7 +43,7 @@ export function Header({ isAuthenticated }: HeaderProps) {
             <Button variant="outline" size="sm">
               Sign In
             </Button>
-            <Button size="sm">
+            <Button size="sm" onClick={handleGetStarted}>
               Get Started
             </Button>
           </div>
