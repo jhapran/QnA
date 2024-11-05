@@ -285,7 +285,7 @@ export function Landing() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="border-blue-50 text-white hover:bg-white/10"
+                      className="bg-blue-50 text-blue-600 hover:bg-blue-50"
                     >
                       Schedule Demo
                     </Button>
